@@ -3,576 +3,858 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Önal Eczanesi – Çaykara / Trabzon</title>
-  <meta name="description" content="Önal Eczanesi – Çaykara, Trabzon. Uzman eczacılarımızla hizmetinizdeyiz. Pazar hariç her gün 08.00–19.00." />
+  <title>Önal Eczanesi – Uzungöl, Trabzon</title>
+  <meta name="description" content="Önal Eczanesi – Eczacı Onur Can Önal. Atatürk Caddesi 317B, Uzungöl / Çaykara, Trabzon. Pzt–Cmt 08:00–19:00." />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+
   <style>
+    /* ─── RESET & BASE ─────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --green:       #2d6a4f;
-      --green-light: #edf5f0;
-      --green-mid:   #c8dfc0;
-      --green-muted: #9aab97;
-      --green-dark:  #1a3d2b;
-      --ink:         #111;
-      --ink-muted:   #6b7c68;
-      --surface:     #f5f7f5;
-      --white:       #ffffff;
-      --border:      #e4ebe2;
-      --serif: 'DM Serif Display', Georgia, serif;
-      --sans:  'DM Sans', system-ui, sans-serif;
+      --green-dark:   #1a3a2a;
+      --green-mid:    #0f2a1a;
+      --green-soft:   #2a5a3a;
+      --green-muted:  #7aaa8a;
+      --green-light:  #eaf2ea;
+      --lime:         #b8cf6a;
+      --cream:        #f5f2ec;
+      --cream-warm:   #f0ece2;
+      --cream-mid:    #e8e2d5;
+      --border:       #ede8df;
+      --text-dark:    #1a3a2a;
+      --text-muted:   #6a7a6a;
+      --red-soft:     #faf0f0;
+      --red-border:   #f0d0d0;
+      --red-text:     #c06060;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--sans);
-      background: var(--surface);
-      color: var(--ink);
-      -webkit-font-smoothing: antialiased;
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      font-size: 16px;
+      line-height: 1.6;
     }
 
-    /* ─── ANIMATIONS ─── */
+    /* ─── ANIMASYONLAR ─────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
     @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.5; transform: scale(0.75); }
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
     }
-    .anim-1 { animation: fadeUp 0.7s ease both; }
-    .anim-2 { animation: fadeUp 0.7s 0.12s ease both; }
-    .anim-3 { animation: fadeUp 0.7s 0.24s ease both; }
-    .anim-4 { animation: fadeUp 0.7s 0.36s ease both; }
-    .anim-5 { animation: fadeUp 0.7s 0.48s ease both; }
 
-    /* ─── NAV ─── */
+    .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+
+    /* ─── NAVBAR ───────────────────────────────────────── */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
       border-bottom: 1px solid var(--border);
-      padding: 0 48px;
-      height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
-    .nav-cross {
-      width: 38px; height: 38px; background: var(--green);
-      border-radius: 11px; display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: transform 0.2s;
-    }
-    .nav-logo:hover .nav-cross { transform: scale(1.07); }
-    .nav-cross svg { display: block; }
-    .nav-name { font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.2; }
-    .nav-sub  { font-size: 11px; color: var(--green-muted); margin-top: 1px; }
-    .nav-badge {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--green-light); border-radius: 30px;
-      padding: 8px 18px; font-size: 12px; font-weight: 500; color: var(--green);
-    }
-    .pulse-dot {
-      width: 7px; height: 7px; background: var(--green);
-      border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    /* ─── HERO ─── */
-    .hero {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 88px 48px 80px;
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 64px;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      min-height: calc(100vh - 68px);
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 11px; font-weight: 500; color: var(--green);
-      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 24px;
-    }
-    .eyebrow-line { width: 32px; height: 1px; background: var(--green); }
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: 52px; font-weight: 400;
-      color: var(--ink); line-height: 1.15;
-      margin-bottom: 24px; letter-spacing: -0.5px;
-    }
-    .hero h1 em {
-      font-style: italic; color: var(--green);
-    }
-    .hero-quote {
-      font-size: 15px; color: var(--ink-muted); line-height: 1.85;
-      margin-bottom: 40px; max-width: 460px;
-      border-left: 2px solid var(--green-mid); padding-left: 18px;
-    }
-    .cta-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 26px; border-radius: 10px;
-      font-size: 13px; font-weight: 500; cursor: pointer;
-      text-decoration: none; transition: transform 0.15s, opacity 0.15s;
-      border: none;
-    }
-    .btn:hover { transform: translateY(-1px); opacity: 0.9; }
-    .btn:active { transform: scale(0.98); }
-    .btn-primary { background: var(--green); color: #fff; }
-    .btn-wa      { background: #25d366; color: #fff; }
-    .btn-ghost   {
-      background: transparent; color: var(--green);
-      border: 1px solid var(--green-mid);
+      padding: 0 40px;
+      height: 64px;
+      box-shadow: 0 1px 16px rgba(26,58,42,0.06);
     }
 
-    /* Hero Info Card */
-    .hero-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px; padding: 32px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    }
-    .hcard-head {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
-    }
-    .hcard-icon {
-      width: 44px; height: 44px; background: var(--green);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-    }
-    .hcard-title { font-size: 15px; font-weight: 500; color: var(--ink); }
-    .hcard-sub   { font-size: 12px; color: var(--green-muted); margin-top: 2px; }
-    .info-row {
-      display: flex; align-items: flex-start; gap: 14px;
-      padding: 15px 0; border-bottom: 1px solid var(--border);
-    }
-    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .info-icon {
-      width: 34px; height: 34px; background: var(--white);
-      border: 1px solid var(--border); border-radius: 9px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .info-label { font-size: 11px; color: var(--green-muted); margin-bottom: 3px; }
-    .info-val   { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.5; }
-
-    /* ─── QUOTE BAND ─── */
-    .quote-band {
-      background: var(--green);
-      padding: 64px 48px; text-align: center;
-    }
-    .qb-eyebrow {
-      font-size: 11px; color: rgba(255,255,255,0.5);
-      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
-    }
-    .qb-text {
-      font-family: var(--serif);
-      font-size: 26px; font-weight: 400; font-style: italic;
-      color: #fff; line-height: 1.55; max-width: 640px; margin: 0 auto 16px;
-    }
-    .qb-author { font-size: 13px; color: rgba(255,255,255,0.55); }
-
-    /* ─── WHY US ─── */
-    .why {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      padding: 80px 48px;
-    }
-    .section-header { margin-bottom: 48px; }
-    .section-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 11px; font-weight: 500; color: var(--green);
-      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: var(--serif);
-      font-size: 34px; font-weight: 400; color: var(--ink);
-    }
-    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .why-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px; padding: 28px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .why-card:hover { transform: translateY(-3px); border-color: var(--green-mid); }
-    .why-num {
-      font-size: 11px; font-weight: 500; color: var(--green);
-      background: var(--green-light); padding: 4px 12px;
-      border-radius: 30px; display: inline-block; margin-bottom: 18px;
-    }
-    .why-card h3 {
-      font-family: var(--serif);
-      font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 10px;
-    }
-    .why-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.8; }
-
-    /* ─── SECOND QUOTE ─── */
-    .quote2 {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 72px 48px; text-align: center;
-    }
-    .q2-mark {
-      font-family: var(--serif);
-      font-size: 72px; color: var(--green-mid);
-      line-height: 0.8; margin-bottom: 24px; display: block;
-    }
-    .q2-text {
-      font-family: var(--serif);
-      font-size: 22px; font-weight: 400; color: var(--green-dark);
-      line-height: 1.65; max-width: 560px; margin: 0 auto 16px;
-    }
-    .q2-author { font-size: 12px; color: var(--green-muted); }
-
-    /* ─── CONTACT ─── */
-    .contact {
-      background: var(--white);
-      padding: 80px 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-    .contact-left h2 {
-      font-family: var(--serif);
-      font-size: 34px; font-weight: 400; color: var(--ink); margin-bottom: 10px;
-    }
-    .contact-left p {
-      font-size: 14px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 36px;
-    }
-    .cinfo-row {
-      display: flex; align-items: center; gap: 16px; margin-bottom: 22px;
-    }
-    .cinfo-icon {
-      width: 44px; height: 44px; background: var(--green-light);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .cinfo-label { font-size: 11px; color: var(--green-muted); margin-bottom: 3px; }
-    .cinfo-val {
-      font-size: 14px; font-weight: 500; color: var(--ink);
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
     }
-    .cinfo-val:hover { color: var(--green); }
-    .hours-box {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 14px; padding: 20px 24px; margin-top: 28px;
+    .logo-text-wrap { line-height: 1; }
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: var(--green-dark);
+      font-weight: 700;
+      letter-spacing: 1px;
     }
-    .hours-title { font-size: 12px; font-weight: 500; color: var(--green); margin-bottom: 12px; letter-spacing: 0.5px; }
-    .hours-row {
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 13px; color: var(--ink-muted); padding: 6px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .hours-row:last-child { border-bottom: none; }
-    .hours-row .day { color: var(--ink); font-weight: 500; }
-    .hours-row .time { color: var(--green); font-weight: 500; }
-    .hours-row .closed { color: #c0392b; font-weight: 500; }
-
-    /* Map */
-    .map-wrap {
-      border-radius: 20px; overflow: hidden;
-      border: 1px solid var(--border);
-      height: 100%; min-height: 400px;
-    }
-    .map-wrap iframe {
-      width: 100%; height: 100%; border: none; display: block; min-height: 400px;
+    .logo-sub {
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: var(--green-muted);
+      text-transform: uppercase;
+      margin-top: 2px;
     }
 
-    /* ─── FOOTER ─── */
-    footer {
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: #888;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green-dark); }
+
+    .btn-nav {
       background: var(--green-dark);
-      padding: 32px 48px;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 16px;
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 24px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.15s;
     }
-    .footer-left { display: flex; align-items: center; gap: 14px; }
-    .footer-cross {
-      width: 32px; height: 32px; background: var(--green);
-      border-radius: 9px; display: flex; align-items: center; justify-content: center;
-    }
-    .footer-name { font-size: 14px; font-weight: 500; color: #fff; }
-    .footer-sub  { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
-    .footer-quote {
-      font-family: var(--serif);
-      font-size: 13px; font-style: italic; color: rgba(255,255,255,0.45);
+    .btn-nav:hover { background: #0f2a1a; transform: translateY(-1px); }
+
+    /* ─── HERO ─────────────────────────────────────────── */
+    #hero {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      min-height: 420px;
+      background: var(--green-dark);
     }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      nav { padding: 0 24px; }
-      .hero { grid-template-columns: 1fr; padding: 56px 24px 48px; min-height: auto; gap: 40px; }
-      .hero h1 { font-size: 38px; }
-      .why { padding: 56px 24px; }
-      .why-grid { grid-template-columns: 1fr; gap: 16px; }
-      .quote-band { padding: 48px 24px; }
-      .qb-text { font-size: 20px; }
-      .quote2 { padding: 48px 24px; }
-      .contact { grid-template-columns: 1fr; padding: 56px 24px; gap: 40px; }
-      .map-wrap { min-height: 280px; }
-      .map-wrap iframe { min-height: 280px; }
-      footer { padding: 24px; flex-direction: column; text-align: center; }
+    .hero-left {
+      padding: 60px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 3.5px;
+      color: var(--lime);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      color: var(--cream);
+      line-height: 1.1;
+      font-weight: 400;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--lime);
+    }
+
+    .hero-divider {
+      width: 44px;
+      height: 2px;
+      background: var(--lime);
+      margin: 24px 0;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--green-muted);
+      line-height: 1.8;
+      max-width: 300px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--lime);
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(184,207,106,0.35); }
+
+    .btn-outline {
+      border: 1px solid var(--green-soft);
+      color: var(--green-muted);
+      font-size: 12px;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--green-muted); color: #9dbfae; }
+
+    /* ─── HERO SAĞ – ECZACI FOTOĞRAFI ─────────────────── */
+    .hero-right {
+      background: var(--green-mid);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 0;
+    }
+
+    /* Dekoratif halkalar */
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid var(--green-soft);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .ring-1 { width: 200px; height: 200px; top: -40px; right: -50px; }
+    .ring-2 { width: 130px; height: 130px; top: 20px;  right: 10px; }
+    .ring-3 { width:  70px; height:  70px; bottom: 60px; left: 20px; }
+
+    /*
+    ╔══════════════════════════════════════════════════════╗
+    ║  📸 ECZACI FOTOĞRAFI — BURAYA EKLE                  ║
+    ║                                                      ║
+    ║  1. Fotoğrafı "eczaci.jpg" adıyla kaydet             ║
+    ║  2. index.html ile aynı klasöre koy                  ║
+    ║  3. Aşağıdaki src="eczaci.jpg" satırını aktif et     ║
+    ║     (şu an placeholder div görünüyor)                ║
+    ╚══════════════════════════════════════════════════════╝
+    */
+    .pharmacist-photo-wrap {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* Fotoğraf hazır olunca bu satırı aktif et: */
+    /* .pharmacist-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    } */
+
+    /* Fotoğraf yokken gösterilen placeholder */
+    .pharmacist-placeholder {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .ph-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: #1a4a2a;
+      border: 2px dashed var(--green-soft);
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ph-avatar span {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--lime);
+    }
+    .ph-name  { font-size: 13px; color: var(--green-muted); font-weight: 500; }
+    .ph-title { font-size: 10px; color: var(--green-soft); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
+    .ph-tag   { font-size: 9px; color: #2a4a3a; background: #0a1f12; border-radius: 4px; padding: 4px 10px; display: inline-block; margin-top: 10px; }
+
+    /* ─── MARKİ ŞERİT ──────────────────────────────────── */
+    .marquee-strip {
+      background: var(--lime);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-inner span {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: var(--green-dark);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ─── HAKKIMIZDA + ECZANE FOTOĞRAFI ───────────────── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 60px 48px;
+      background: var(--cream);
+      align-items: start;
+    }
+
+    /*
+    ╔══════════════════════════════════════════════════════╗
+    ║  📸 ECZANE FOTOĞRAFI — BURAYA EKLE                  ║
+    ║                                                      ║
+    ║  1. Fotoğrafı "eczane.jpg" adıyla kaydet             ║
+    ║  2. index.html ile aynı klasöre koy                  ║
+    ║  3. Placeholder div'i kaldır, img'yi aktif et        ║
+    ╚══════════════════════════════════════════════════════╝
+    */
+    .pharmacy-photo {
+      width: 100%;
+      height: 260px;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Fotoğraf hazır olunca bu satırı aktif et: */
+    /* .pharmacy-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    } */
+
+    /* Fotoğraf yokken gösterilen placeholder */
+    .pharmacy-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--cream-mid);
+      border: 2px dashed #c0b89a;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pharmacy-photo-placeholder svg { opacity: 0.5; }
+    .pharmacy-photo-placeholder p { font-size: 12px; color: #a09278; text-align: center; line-height: 1.6; }
+
+    .photo-caption {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .caption-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      flex-shrink: 0;
+    }
+    .caption-text { font-size: 11px; color: #6a8a6a; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Hakkımızda metin */
+    .about-text { padding-top: 8px; }
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      color: var(--lime);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--green-dark);
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+    .about-desc { font-size: 13px; color: var(--text-muted); line-height: 1.9; }
+
+    .checklist {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: none;
+    }
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #4a6a4a;
+    }
+    .check-icon {
+      width: 20px; height: 20px;
+      background: var(--green-light);
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      color: #3a6a2a;
+      font-weight: 600;
+    }
+
+    /* ─── ÇALIŞMA SAATLERİ ─────────────────────────────── */
+    #hours {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 48px;
+    }
+
+    .hours-header { margin-bottom: 28px; }
+
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .day-card {
+      text-align: center;
+      background: var(--green-light);
+      border: 1px solid #d4e8b8;
+      border-radius: 10px;
+      padding: 14px 6px;
+      transition: transform 0.15s;
+    }
+    .day-card:hover { transform: translateY(-3px); }
+
+    .day-card.closed {
+      background: var(--red-soft);
+      border-color: var(--red-border);
+    }
+
+    .day-name {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #5a8a3a;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .day-card.closed .day-name { color: var(--red-text); }
+
+    .day-time {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--green-dark);
+      line-height: 1.5;
+    }
+    .day-card.closed .day-time { color: var(--red-text); font-size: 12px; }
+
+    .hours-summary {
+      background: var(--green-light);
+      border: 1px solid #d4e8b8;
+      border-radius: 10px;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .summary-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .summary-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-green  { background: #5a8a3a; animation: pulse-dot 2.5s ease-in-out infinite; }
+    .dot-red    { background: var(--red-text); }
+
+    .summary-label { font-size: 13px; color: #3a6a2a; font-weight: 500; }
+    .summary-time  { font-size: 15px; font-weight: 600; color: var(--green-dark); letter-spacing: 0.5px; }
+    .summary-closed { font-size: 13px; color: var(--red-text); }
+
+    /* ─── ALINTI ───────────────────────────────────────── */
+    #quote {
+      background: var(--cream-warm);
+      border-bottom: 1px solid #ddd7c8;
+      padding: 56px 48px;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;
+      color: var(--lime);
+      line-height: 0.5;
+      flex-shrink: 0;
+      margin-top: 12px;
+      user-select: none;
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--green-dark);
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    .quote-author {
+      font-size: 12px;
+      color: #8a9a7a;
+      margin-top: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* ─── FOOTER / İLETİŞİM ────────────────────────────── */
+    #contact {
+      background: var(--green-dark);
+      padding: 60px 48px 40px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .contact-brand .logo-name { color: var(--cream); font-size: 20px; }
+    .contact-brand .logo-sub  { color: var(--green-muted); letter-spacing: 2px; }
+
+    .brand-desc {
+      font-size: 13px;
+      color: #5a8a6a;
+      line-height: 1.8;
+      margin-top: 16px;
+      max-width: 240px;
+    }
+
+    .contact-col-title {
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--lime);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .contact-item a, .contact-item span {
+      font-size: 13px;
+      color: #c0d8c0;
+      text-decoration: none;
+      line-height: 1.7;
+      transition: color 0.2s;
+    }
+    .contact-item a:hover { color: var(--lime); }
+    .contact-item .sub { font-size: 10px; color: #3a6a4a; }
+
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      background: #25d366;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 9px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .wa-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--green-soft);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 12px; color: #3a6a4a; }
+    .footer-loc  { font-size: 11px; color: #2a4a3a; letter-spacing: 2px; text-transform: uppercase; }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+
+      #hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 40px 24px; }
+      .hero-title { font-size: 32px; }
+      .hero-right { min-height: 200px; }
+
+      #about { grid-template-columns: 1fr; padding: 40px 24px; gap: 24px; }
+
+      #hours { padding: 40px 20px; }
+      .days-grid { grid-template-columns: repeat(4, 1fr); }
+
+      #quote { padding: 40px 24px; flex-direction: column; }
+
+      #contact { padding: 40px 24px 28px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 28px; }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a class="nav-logo" href="#">
-      <div class="nav-cross">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <rect x="7" y="1" width="4" height="16" rx="2" fill="white"/>
-          <rect x="1" y="7" width="16" height="4" rx="2" fill="white"/>
-        </svg>
-      </div>
-      <div>
-        <div class="nav-name">Önal Eczanesi</div>
-        <div class="nav-sub">Çaykara · Trabzon</div>
+    <a href="#" class="logo">
+      <svg width="38" height="38" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Önal Eczanesi logo">
+        <rect width="34" height="34" rx="8" fill="#1a3a2a"/>
+        <path d="M10 17 Q10 11 17 11 Q24 11 24 17 Q24 23 17 23 Q10 23 10 17Z" stroke="#b8cf6a" stroke-width="1.2" fill="none"/>
+        <line x1="17" y1="8"  x2="17" y2="26" stroke="#b8cf6a" stroke-width="1.2"/>
+        <line x1="9"  y1="17" x2="25" y2="17" stroke="#b8cf6a" stroke-width="1.2"/>
+        <circle cx="17" cy="17" r="2.5" fill="#b8cf6a"/>
+      </svg>
+      <div class="logo-text-wrap">
+        <div class="logo-name">ÖNAL</div>
+        <div class="logo-sub">Eczanesi</div>
       </div>
     </a>
-    <div class="nav-badge">
-      <div class="pulse-dot"></div>
-      Pazar hariç her gün açık · 08.00 – 19.00
-    </div>
+
+    <ul class="nav-links">
+      <li><a href="#about">Hakkımızda</a></li>
+      <li><a href="#hours">Çalışma Saatleri</a></li>
+      <li><a href="#contact">İletişim</a></li>
+      <li>
+        <a class="btn-nav" href="https://wa.me/905456119998" target="_blank" rel="noopener">
+          WhatsApp →
+        </a>
+      </li>
+    </ul>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <div class="hero-eyebrow anim-1">
-        <div class="eyebrow-line"></div>
-        Sağlık · Güven · Hizmet
-      </div>
-      <h1 class="anim-2">
-        Sağlığınız İçin<br>
-        <em>Güvenilir</em><br>
-        Eczaneniz
+
+  <section id="hero">
+
+    <div class="hero-left">
+      <p class="hero-eyebrow fade-up delay-1">Uzungöl · Çaykara · Trabzon</p>
+      <h1 class="hero-title fade-up delay-2">
+        Sağlığınız için<br>
+        <em>doğru adres.</em>
       </h1>
-      <p class="hero-quote anim-3">
-        "Sağlık, sahip olduğunuzda fark etmediğiniz, kaybettiğinizde her şeyin önüne geçen biricik hazinedir."
+      <div class="hero-divider fade-up delay-3"></div>
+      <p class="hero-desc fade-up delay-3">
+        Eczacı Onur Can Önal danışmanlığıyla, her ihtiyacınızda güvenilir ve sıcak sağlık hizmeti.
       </p>
-      <div class="cta-row anim-4">
-        <a class="btn btn-primary" href="tel:05308636193">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="white"/>
-          </svg>
-          Hemen Ara
+      <div class="hero-btns fade-up delay-4">
+        <a class="btn-primary" href="https://wa.me/905456119998" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.524 5.847L.057 23.882l6.187-1.461A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.374l-.359-.213-3.724.879.936-3.623-.234-.372A9.818 9.818 0 1112 21.818z"/></svg>
+          WhatsApp ile Ulaş
         </a>
-        <a class="btn btn-wa" href="https://wa.me/905456119998" target="_blank">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="white">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          WhatsApp
-        </a>
-        <a class="btn btn-ghost" href="mailto:onureczanesi1@gmail.com">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#2d6a4f"/>
-          </svg>
-          E-posta
-        </a>
+        <a class="btn-outline" href="tel:05308636193">0530 863 61 93</a>
       </div>
     </div>
 
-    <div class="hero-card anim-5">
-      <div class="hcard-head">
-        <div class="hcard-icon">
-          <svg width="20" height="20" viewBox="0 0 18 18" fill="none">
-            <rect x="7" y="1" width="4" height="16" rx="2" fill="white"/>
-            <rect x="1" y="7" width="16" height="4" rx="2" fill="white"/>
-          </svg>
-        </div>
-        <div>
-          <div class="hcard-title">Önal Eczanesi</div>
-          <div class="hcard-sub">Çaykara, Trabzon</div>
-        </div>
-      </div>
-
-      <div class="info-row">
-        <div class="info-icon">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="9" stroke="#2d6a4f" stroke-width="1.5"/>
-            <path d="M12 7v5l3.5 3.5" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div>
-          <div class="info-label">Çalışma saatleri</div>
-          <div class="info-val">08.00 – 19.00</div>
-        </div>
-      </div>
-
-      <div class="info-row">
-        <div class="info-icon">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="4" width="18" height="18" rx="2" stroke="#2d6a4f" stroke-width="1.5"/>
-            <path d="M3 10h18M8 2v4M16 2v4" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div>
-          <div class="info-label">Çalışma günleri</div>
-          <div class="info-val">Pazar hariç her gün</div>
-        </div>
-      </div>
-
-      <div class="info-row">
-        <div class="info-icon">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#2d6a4f"/>
-          </svg>
-        </div>
-        <div>
-          <div class="info-label">Telefon</div>
-          <div class="info-val">0530 863 61 93</div>
-        </div>
-      </div>
-
-      <div class="info-row">
-        <div class="info-icon">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#2d6a4f"/>
-          </svg>
-        </div>
-        <div>
-          <div class="info-label">Adres</div>
-          <div class="info-val">Atatürk Cad. 317B<br>Çaykara / Trabzon</div>
-        </div>
+    <div class="hero-right">
+      <div class="hero-ring ring-1"></div>
+      <div class="hero-ring ring-2"></div>
+      <div class="hero-ring ring-3"></div>
+      <div class="pharmacist-photo-wrap">
+        <img src="eczaci.jpg" alt="Eczacı Onur Can Önal" style="width:100%;height:100%;object-fit:cover;object-position:top center;" />
       </div>
     </div>
   </section>
 
-  <!-- QUOTE BAND -->
-  <section class="quote-band">
-    <div class="qb-eyebrow">Önal Eczanesi</div>
-    <p class="qb-text">"İyi bir eczacı yalnızca ilaç vermez — dinler, anlar ve güven verir."</p>
-    <div class="qb-author">— Önal Eczanesi, Çaykara</div>
-  </section>
 
-  <!-- WHY US -->
-  <section class="why">
-    <div class="section-header">
-      <div class="section-eyebrow"><div class="eyebrow-line"></div>Neden biz?</div>
-      <h2 class="section-title">Size en iyi hizmeti sunmak için buradayız</h2>
+  <!-- ═══════════════════ MARKİ ŞERİT ════════════════════ -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-inner">
+      <span>✦ REÇETE İLAÇLARI &nbsp;&nbsp; ✦ SAĞLIK DANIŞMANLIĞI &nbsp;&nbsp; ✦ VİTAMİN &amp; TAKVİYE &nbsp;&nbsp; ✦ TIBBİ MALZEME &nbsp;&nbsp; ✦ BEBEK ÜRÜNLERİ &nbsp;&nbsp; ✦ DERMATOKOZMETİK &nbsp;&nbsp; ✦ REÇETESIZ İLAÇLAR &nbsp;&nbsp; ✦ REÇETE İLAÇLARI &nbsp;&nbsp; ✦ SAĞLIK DANIŞMANLIĞI &nbsp;&nbsp; ✦ VİTAMİN &amp; TAKVİYE &nbsp;&nbsp; ✦ TIBBİ MALZEME &nbsp;&nbsp; ✦ BEBEK ÜRÜNLERİ &nbsp;&nbsp; ✦ DERMATOKOZMETİK &nbsp;&nbsp; ✦ REÇETESIZ İLAÇLAR &nbsp;&nbsp;</span>
     </div>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-num">01</div>
-        <h3>Uzman Danışmanlık</h3>
-        <p>Her ilaç için doğru bilgi, her soruya sabırlı bir yanıt. Sağlığınızda asla tavizsiziz.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-num">02</div>
-        <h3>Güvenilir Hizmet</h3>
-        <p>Reçeteli veya reçetesiz tüm ilaçlarınızı hızlı ve güvenle temin ediyoruz.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-num">03</div>
-        <h3>Kolay Ulaşım</h3>
-        <p>Telefon veya WhatsApp ile bize anında ulaşabilir, ihtiyacınız olan bilgiyi alabilirsiniz.</p>
-      </div>
-    </div>
-  </section>
+  </div>
 
-  <!-- SECOND QUOTE -->
-  <section class="quote2">
-    <span class="q2-mark">"</span>
-    <p class="q2-text">Sağlık olmadan hayat, renksiz bir tablo gibidir. Biz o tabloya renk katmak için varız.</p>
-    <div class="q2-author">— Önal Eczanesi, Çaykara / Trabzon</div>
-  </section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="iletisim">
-    <div class="contact-left">
-      <div class="section-eyebrow"><div class="eyebrow-line"></div>Bize ulaşın</div>
-      <h2>Her zaman yanınızdayız</h2>
-      <p>Bir sorunuz mu var? Hemen arayın ya da WhatsApp üzerinden yazın. Pazar günü dışında her gün hizmetinizdeyiz.</p>
+  <!-- ═══════════════════ HAKKIMIZDA ═════════════════════ -->
+  <section id="about">
 
-      <div class="cinfo-row">
-        <div class="cinfo-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#2d6a4f"/>
-          </svg>
-        </div>
-        <div>
-          <div class="cinfo-label">Telefon</div>
-          <a class="cinfo-val" href="tel:05308636193">0530 863 61 93</a>
-        </div>
+    <div>
+      <div class="pharmacy-photo">
+        <img src="eczane.jpg" alt="Önal Eczanesi dış görünüm" style="width:100%;height:100%;object-fit:cover;border-radius:14px;display:block;" />
       </div>
 
-      <div class="cinfo-row">
-        <div class="cinfo-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#25d366"/>
-          </svg>
-        </div>
-        <div>
-          <div class="cinfo-label">WhatsApp</div>
-          <a class="cinfo-val" href="https://wa.me/905456119998" target="_blank">0545 611 99 98</a>
-        </div>
-      </div>
-
-      <div class="cinfo-row">
-        <div class="cinfo-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#2d6a4f"/>
-          </svg>
-        </div>
-        <div>
-          <div class="cinfo-label">E-posta</div>
-          <a class="cinfo-val" href="mailto:onureczanesi1@gmail.com">onureczanesi1@gmail.com</a>
-        </div>
-      </div>
-
-      <div class="cinfo-row">
-        <div class="cinfo-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#2d6a4f"/>
-          </svg>
-        </div>
-        <div>
-          <div class="cinfo-label">Adres</div>
-          <span class="cinfo-val" style="font-size:13px">Uzungöl, Atatürk Caddesi 317B<br>61940 Çaykara / Trabzon</span>
-        </div>
-      </div>
-
-      <div class="hours-box">
-        <div class="hours-title">ÇALIŞMA SAATLERİ</div>
-        <div class="hours-row"><span class="day">Pzt – Cmt</span><span class="time">08.00 – 19.00</span></div>
-        <div class="hours-row"><span class="day">Pazar</span><span class="closed">Kapalı</span></div>
+      <div class="photo-caption">
+        <div class="caption-dot"></div>
+        <span class="caption-text">Atatürk Cad. 317B · Uzungöl</span>
       </div>
     </div>
 
-    <div class="map-wrap">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.7!2d40.0419!3d40.7469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzQ5LjAiTiA0MMKwMDInMzEuOCJF!5e0!3m2!1str!2str!4v1"
-        width="100%" height="100%" style="border:0; min-height:400px"
-        allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+    <div class="about-text">
+      <p class="section-eyebrow">Hakkımızda</p>
+      <h2 class="section-title">Uzungöl'ün güvenilir sağlık noktası</h2>
+      <p class="about-desc">
+        Önal Eczanesi olarak, bölge halkının ve ziyaretçilerin tüm sağlık ihtiyaçlarını karşılamak için buradayız.
+        Her danışmada kişiye özel, sıcak ve profesyonel bir yaklaşım sunuyor; sağlığınızı en önemli önceliğimiz olarak görüyoruz.
+      </p>
+      <ul class="checklist">
+        <li><span class="check-icon">✓</span> Uzman eczacı danışmanlığı</li>
+        <li><span class="check-icon">✓</span> Geniş ilaç ve ürün yelpazesi</li>
+        <li><span class="check-icon">✓</span> Hızlı ve güvenilir hizmet</li>
+        <li><span class="check-icon">✓</span> Sıcak ve samimi yaklaşım</li>
+      </ul>
+    </div>
+
+  </section>
+
+
+  <!-- ═══════════════════ ÇALIŞMA SAATLERİ ══════════════ -->
+  <section id="hours">
+    <div class="hours-header">
+      <p class="section-eyebrow">Çalışma Saatleri</p>
+      <h2 class="section-title">Ne zaman ziyaret edebilirsiniz?</h2>
+    </div>
+
+    <div class="days-grid">
+      <div class="day-card">
+        <div class="day-name">Pzt</div>
+        <div class="day-time">08:00<br>—<br>19:00</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">Sal</div>
+        <div class="day-time">08:00<br>—<br>19:00</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">Çar</div>
+        <div class="day-time">08:00<br>—<br>19:00</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">Per</div>
+        <div class="day-time">08:00<br>—<br>19:00</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">Cum</div>
+        <div class="day-time">08:00<br>—<br>19:00</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">Cmt</div>
+        <div class="day-time">08:00<br>—<br>19:00</div>
+      </div>
+      <div class="day-card closed">
+        <div class="day-name">Paz</div>
+        <div class="day-time">Kapalı</div>
+      </div>
+    </div>
+
+    <div class="hours-summary">
+      <div class="summary-item">
+        <div class="summary-dot dot-green"></div>
+        <span class="summary-label">Pazartesi – Cumartesi</span>
+      </div>
+      <span class="summary-time">08:00 – 19:00</span>
+      <div class="summary-item">
+        <div class="summary-dot dot-red"></div>
+        <span class="summary-closed">Pazar günleri kapalı</span>
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-left">
-      <div class="footer-cross">
-        <svg width="14" height="14" viewBox="0 0 18 18" fill="none">
-          <rect x="7" y="1" width="4" height="16" rx="2" fill="white"/>
-          <rect x="1" y="7" width="16" height="4" rx="2" fill="white"/>
-        </svg>
+
+  <!-- ═══════════════════ ALINTI ════════════════════════ -->
+  <section id="quote">
+    <div class="quote-mark" aria-hidden="true">"</div>
+    <div>
+      <p class="quote-text">
+        Sağlık en büyük servettir, huzur en büyük hazinedir, güven en iyi arkadaştır.
+      </p>
+      <p class="quote-author">— Buda</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════ FOOTER / İLETİŞİM ════════════ -->
+  <footer id="contact">
+    <div class="contact-grid">
+
+      <!-- Marka -->
+      <div class="contact-brand">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+            <rect width="34" height="34" rx="8" fill="#0f2a1a"/>
+            <path d="M10 17 Q10 11 17 11 Q24 11 24 17 Q24 23 17 23 Q10 23 10 17Z" stroke="#b8cf6a" stroke-width="1.2" fill="none"/>
+            <line x1="17" y1="8"  x2="17" y2="26" stroke="#b8cf6a" stroke-width="1.2"/>
+            <line x1="9"  y1="17" x2="25" y2="17" stroke="#b8cf6a" stroke-width="1.2"/>
+            <circle cx="17" cy="17" r="2.5" fill="#b8cf6a"/>
+          </svg>
+          <div>
+            <div class="logo-name">ÖNAL ECZANESİ</div>
+            <div class="logo-sub">Uzungöl · Trabzon</div>
+          </div>
+        </div>
+        <p class="brand-desc">
+          Eczacı Onur Can Önal liderliğinde, Uzungöl'de güvenilir sağlık hizmeti sunuyoruz.
+        </p>
       </div>
+
+      <!-- Telefon & İletişim -->
       <div>
-        <div class="footer-name">Önal Eczanesi</div>
-        <div class="footer-sub">© 2026 · Çaykara, Trabzon</div>
+        <p class="contact-col-title">İletişim</p>
+        <div class="contact-item">
+          <a href="tel:05308636193">0530 863 61 93</a>
+          <a href="tel:05456119998">0545 611 99 98</a>
+          <span class="sub">WhatsApp hattı</span>
+          <a href="mailto:onaleczanesi1@gmail.com">onaleczanesi1@gmail.com</a>
+        </div>
+        <a class="wa-btn" href="https://wa.me/905456119998" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.524 5.847L.057 23.882l6.187-1.461A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.374l-.359-.213-3.724.879.936-3.623-.234-.372A9.818 9.818 0 1112 21.818z"/></svg>
+          WhatsApp'tan Yaz
+        </a>
       </div>
+
+      <!-- Adres -->
+      <div>
+        <p class="contact-col-title">Adres</p>
+        <div class="contact-item">
+          <span>Atatürk Caddesi 317B</span>
+          <span>61940 Uzungöl / Çaykara</span>
+          <span>Trabzon</span>
+        </div>
+        <div style="margin-top:16px;">
+          <p class="contact-col-title">Çalışma Saatleri</p>
+          <div class="contact-item">
+            <span style="font-size:13px;color:#c0d8c0;">Pzt – Cmt: 08:00 – 19:00</span>
+            <span style="font-size:13px;color:#c06060;">Pazar: Kapalı</span>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="footer-quote">"Sağlığınız bizim önceliğimiz."</div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Önal Eczanesi · Tüm hakları saklıdır.</span>
+      <span class="footer-loc">Uzungöl · Çaykara · Trabzon</span>
+    </div>
   </footer>
 
 </body>
