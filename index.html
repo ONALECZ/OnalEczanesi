@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Önal Eczanesi – Çaykara / Trabzon</title>
+  <meta name="description" content="Önal Eczanesi – Çaykara, Trabzon. Uzman eczacılarımızla hizmetinizdeyiz. Pazar hariç her gün 08.00–19.00." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #2d6a4f;
+      --green-light: #edf5f0;
+      --green-mid:   #c8dfc0;
+      --green-muted: #9aab97;
+      --green-dark:  #1a3d2b;
+      --ink:         #111;
+      --ink-muted:   #6b7c68;
+      --surface:     #f5f7f5;
+      --white:       #ffffff;
+      --border:      #e4ebe2;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--surface);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.75); }
+    }
+    .anim-1 { animation: fadeUp 0.7s ease both; }
+    .anim-2 { animation: fadeUp 0.7s 0.12s ease both; }
+    .anim-3 { animation: fadeUp 0.7s 0.24s ease both; }
+    .anim-4 { animation: fadeUp 0.7s 0.36s ease both; }
+    .anim-5 { animation: fadeUp 0.7s 0.48s ease both; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .nav-cross {
+      width: 38px; height: 38px; background: var(--green);
+      border-radius: 11px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: transform 0.2s;
+    }
+    .nav-logo:hover .nav-cross { transform: scale(1.07); }
+    .nav-cross svg { display: block; }
+    .nav-name { font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.2; }
+    .nav-sub  { font-size: 11px; color: var(--green-muted); margin-top: 1px; }
+    .nav-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--green-light); border-radius: 30px;
+      padding: 8px 18px; font-size: 12px; font-weight: 500; color: var(--green);
+    }
+    .pulse-dot {
+      width: 7px; height: 7px; background: var(--green);
+      border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 88px 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 64px;
+      align-items: center;
+      min-height: calc(100vh - 68px);
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 500; color: var(--green);
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 24px;
+    }
+    .eyebrow-line { width: 32px; height: 1px; background: var(--green); }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: 52px; font-weight: 400;
+      color: var(--ink); line-height: 1.15;
+      margin-bottom: 24px; letter-spacing: -0.5px;
+    }
+    .hero h1 em {
+      font-style: italic; color: var(--green);
+    }
+    .hero-quote {
+      font-size: 15px; color: var(--ink-muted); line-height: 1.85;
+      margin-bottom: 40px; max-width: 460px;
+      border-left: 2px solid var(--green-mid); padding-left: 18px;
+    }
+    .cta-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 26px; border-radius: 10px;
+      font-size: 13px; font-weight: 500; cursor: pointer;
+      text-decoration: none; transition: transform 0.15s, opacity 0.15s;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-1px); opacity: 0.9; }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-wa      { background: #25d366; color: #fff; }
+    .btn-ghost   {
+      background: transparent; color: var(--green);
+      border: 1px solid var(--green-mid);
+    }
+
+    /* Hero Info Card */
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .hcard-head {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+    }
+    .hcard-icon {
+      width: 44px; height: 44px; background: var(--green);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    }
+    .hcard-title { font-size: 15px; font-weight: 500; color: var(--ink); }
+    .hcard-sub   { font-size: 12px; color: var(--green-muted); margin-top: 2px; }
+    .info-row {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 15px 0; border-bottom: 1px solid var(--border);
+    }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-icon {
+      width: 34px; height: 34px; background: var(--white);
+      border: 1px solid var(--border); border-radius: 9px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .info-label { font-size: 11px; color: var(--green-muted); margin-bottom: 3px; }
+    .info-val   { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.5; }
+
+    /* ─── QUOTE BAND ─── */
+    .quote-band {
+      background: var(--green);
+      padding: 64px 48px; text-align: center;
+    }
+    .qb-eyebrow {
+      font-size: 11px; color: rgba(255,255,255,0.5);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .qb-text {
+      font-family: var(--serif);
+      font-size: 26px; font-weight: 400; font-style: italic;
+      color: #fff; line-height: 1.55; max-width: 640px; margin: 0 auto 16px;
+    }
+    .qb-author { font-size: 13px; color: rgba(255,255,255,0.55); }
+
+    /* ─── WHY US ─── */
+    .why {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 80px 48px;
+    }
+    .section-header { margin-bottom: 48px; }
+    .section-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 500; color: var(--green);
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 34px; font-weight: 400; color: var(--ink);
+    }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .why-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .why-card:hover { transform: translateY(-3px); border-color: var(--green-mid); }
+    .why-num {
+      font-size: 11px; font-weight: 500; color: var(--green);
+      background: var(--green-light); padding: 4px 12px;
+      border-radius: 30px; display: inline-block; margin-bottom: 18px;
+    }
+    .why-card h3 {
+      font-family: var(--serif);
+      font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 10px;
+    }
+    .why-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.8; }
+
+    /* ─── SECOND QUOTE ─── */
+    .quote2 {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 72px 48px; text-align: center;
+    }
+    .q2-mark {
+      font-family: var(--serif);
+      font-size: 72px; color: var(--green-mid);
+      line-height: 0.8; margin-bottom: 24px; display: block;
+    }
+    .q2-text {
+      font-family: var(--serif);
+      font-size: 22px; font-weight: 400; color: var(--green-dark);
+      line-height: 1.65; max-width: 560px; margin: 0 auto 16px;
+    }
+    .q2-author { font-size: 12px; color: var(--green-muted); }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      background: var(--white);
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-left h2 {
+      font-family: var(--serif);
+      font-size: 34px; font-weight: 400; color: var(--ink); margin-bottom: 10px;
+    }
+    .contact-left p {
+      font-size: 14px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 36px;
+    }
+    .cinfo-row {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 22px;
+    }
+    .cinfo-icon {
+      width: 44px; height: 44px; background: var(--green-light);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .cinfo-label { font-size: 11px; color: var(--green-muted); margin-bottom: 3px; }
+    .cinfo-val {
+      font-size: 14px; font-weight: 500; color: var(--ink);
+      text-decoration: none;
+    }
+    .cinfo-val:hover { color: var(--green); }
+    .hours-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px 24px; margin-top: 28px;
+    }
+    .hours-title { font-size: 12px; font-weight: 500; color: var(--green); margin-bottom: 12px; letter-spacing: 0.5px; }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: var(--ink-muted); padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { color: var(--ink); font-weight: 500; }
+    .hours-row .time { color: var(--green); font-weight: 500; }
+    .hours-row .closed { color: #c0392b; font-weight: 500; }
+
+    /* Map */
+    .map-wrap {
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border);
+      height: 100%; min-height: 400px;
+    }
+    .map-wrap iframe {
+      width: 100%; height: 100%; border: none; display: block; min-height: 400px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--green-dark);
+      padding: 32px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-left { display: flex; align-items: center; gap: 14px; }
+    .footer-cross {
+      width: 32px; height: 32px; background: var(--green);
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+    }
+    .footer-name { font-size: 14px; font-weight: 500; color: #fff; }
+    .footer-sub  { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .footer-quote {
+      font-family: var(--serif);
+      font-size: 13px; font-style: italic; color: rgba(255,255,255,0.45);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .hero { grid-template-columns: 1fr; padding: 56px 24px 48px; min-height: auto; gap: 40px; }
+      .hero h1 { font-size: 38px; }
+      .why { padding: 56px 24px; }
+      .why-grid { grid-template-columns: 1fr; gap: 16px; }
+      .quote-band { padding: 48px 24px; }
+      .qb-text { font-size: 20px; }
+      .quote2 { padding: 48px 24px; }
+      .contact { grid-template-columns: 1fr; padding: 56px 24px; gap: 40px; }
+      .map-wrap { min-height: 280px; }
+      .map-wrap iframe { min-height: 280px; }
+      footer { padding: 24px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <div class="nav-cross">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="7" y="1" width="4" height="16" rx="2" fill="white"/>
+          <rect x="1" y="7" width="16" height="4" rx="2" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <div class="nav-name">Önal Eczanesi</div>
+        <div class="nav-sub">Çaykara · Trabzon</div>
+      </div>
+    </a>
+    <div class="nav-badge">
+      <div class="pulse-dot"></div>
+      Pazar hariç her gün açık · 08.00 – 19.00
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-eyebrow anim-1">
+        <div class="eyebrow-line"></div>
+        Sağlık · Güven · Hizmet
+      </div>
+      <h1 class="anim-2">
+        Sağlığınız İçin<br>
+        <em>Güvenilir</em><br>
+        Eczaneniz
+      </h1>
+      <p class="hero-quote anim-3">
+        "Sağlık, sahip olduğunuzda fark etmediğiniz, kaybettiğinizde her şeyin önüne geçen biricik hazinedir."
+      </p>
+      <div class="cta-row anim-4">
+        <a class="btn btn-primary" href="tel:05308636193">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="white"/>
+          </svg>
+          Hemen Ara
+        </a>
+        <a class="btn btn-wa" href="https://wa.me/905456119998" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="mailto:onureczanesi1@gmail.com">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#2d6a4f"/>
+          </svg>
+          E-posta
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-card anim-5">
+      <div class="hcard-head">
+        <div class="hcard-icon">
+          <svg width="20" height="20" viewBox="0 0 18 18" fill="none">
+            <rect x="7" y="1" width="4" height="16" rx="2" fill="white"/>
+            <rect x="1" y="7" width="16" height="4" rx="2" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="hcard-title">Önal Eczanesi</div>
+          <div class="hcard-sub">Çaykara, Trabzon</div>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="#2d6a4f" stroke-width="1.5"/>
+            <path d="M12 7v5l3.5 3.5" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="info-label">Çalışma saatleri</div>
+          <div class="info-val">08.00 – 19.00</div>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="18" rx="2" stroke="#2d6a4f" stroke-width="1.5"/>
+            <path d="M3 10h18M8 2v4M16 2v4" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="info-label">Çalışma günleri</div>
+          <div class="info-val">Pazar hariç her gün</div>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#2d6a4f"/>
+          </svg>
+        </div>
+        <div>
+          <div class="info-label">Telefon</div>
+          <div class="info-val">0530 863 61 93</div>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#2d6a4f"/>
+          </svg>
+        </div>
+        <div>
+          <div class="info-label">Adres</div>
+          <div class="info-val">Atatürk Cad. 317B<br>Çaykara / Trabzon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BAND -->
+  <section class="quote-band">
+    <div class="qb-eyebrow">Önal Eczanesi</div>
+    <p class="qb-text">"İyi bir eczacı yalnızca ilaç vermez — dinler, anlar ve güven verir."</p>
+    <div class="qb-author">— Önal Eczanesi, Çaykara</div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why">
+    <div class="section-header">
+      <div class="section-eyebrow"><div class="eyebrow-line"></div>Neden biz?</div>
+      <h2 class="section-title">Size en iyi hizmeti sunmak için buradayız</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>Uzman Danışmanlık</h3>
+        <p>Her ilaç için doğru bilgi, her soruya sabırlı bir yanıt. Sağlığınızda asla tavizsiziz.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>Güvenilir Hizmet</h3>
+        <p>Reçeteli veya reçetesiz tüm ilaçlarınızı hızlı ve güvenle temin ediyoruz.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>Kolay Ulaşım</h3>
+        <p>Telefon veya WhatsApp ile bize anında ulaşabilir, ihtiyacınız olan bilgiyi alabilirsiniz.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECOND QUOTE -->
+  <section class="quote2">
+    <span class="q2-mark">"</span>
+    <p class="q2-text">Sağlık olmadan hayat, renksiz bir tablo gibidir. Biz o tabloya renk katmak için varız.</p>
+    <div class="q2-author">— Önal Eczanesi, Çaykara / Trabzon</div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="iletisim">
+    <div class="contact-left">
+      <div class="section-eyebrow"><div class="eyebrow-line"></div>Bize ulaşın</div>
+      <h2>Her zaman yanınızdayız</h2>
+      <p>Bir sorunuz mu var? Hemen arayın ya da WhatsApp üzerinden yazın. Pazar günü dışında her gün hizmetinizdeyiz.</p>
+
+      <div class="cinfo-row">
+        <div class="cinfo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#2d6a4f"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cinfo-label">Telefon</div>
+          <a class="cinfo-val" href="tel:05308636193">0530 863 61 93</a>
+        </div>
+      </div>
+
+      <div class="cinfo-row">
+        <div class="cinfo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#25d366"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cinfo-label">WhatsApp</div>
+          <a class="cinfo-val" href="https://wa.me/905456119998" target="_blank">0545 611 99 98</a>
+        </div>
+      </div>
+
+      <div class="cinfo-row">
+        <div class="cinfo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#2d6a4f"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cinfo-label">E-posta</div>
+          <a class="cinfo-val" href="mailto:onureczanesi1@gmail.com">onureczanesi1@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="cinfo-row">
+        <div class="cinfo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#2d6a4f"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cinfo-label">Adres</div>
+          <span class="cinfo-val" style="font-size:13px">Uzungöl, Atatürk Caddesi 317B<br>61940 Çaykara / Trabzon</span>
+        </div>
+      </div>
+
+      <div class="hours-box">
+        <div class="hours-title">ÇALIŞMA SAATLERİ</div>
+        <div class="hours-row"><span class="day">Pzt – Cmt</span><span class="time">08.00 – 19.00</span></div>
+        <div class="hours-row"><span class="day">Pazar</span><span class="closed">Kapalı</span></div>
+      </div>
+    </div>
+
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.7!2d40.0419!3d40.7469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzQ5LjAiTiA0MMKwMDInMzEuOCJF!5e0!3m2!1str!2str!4v1"
+        width="100%" height="100%" style="border:0; min-height:400px"
+        allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <div class="footer-cross">
+        <svg width="14" height="14" viewBox="0 0 18 18" fill="none">
+          <rect x="7" y="1" width="4" height="16" rx="2" fill="white"/>
+          <rect x="1" y="7" width="16" height="4" rx="2" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <div class="footer-name">Önal Eczanesi</div>
+        <div class="footer-sub">© 2026 · Çaykara, Trabzon</div>
+      </div>
+    </div>
+    <div class="footer-quote">"Sağlığınız bizim önceliğimiz."</div>
+  </footer>
+
+</body>
+</html>
