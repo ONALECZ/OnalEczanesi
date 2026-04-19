@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
   <meta name="description" content="Önal Eczanesi – Eczacı Onur Can Önal. Atatürk Caddesi 317B, Uzungöl / Çaykara, Trabzon. Pzt–Cmt 08:00–19:00." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&family=Noto+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,331 +59,118 @@
     .delay-3 { animation-delay: 0.4s; }
     .delay-4 { animation-delay: 0.55s; }
 
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #fff;
-      border-bottom: 1px solid var(--border);
+    [data-lang] { display: none; }
+    [data-lang].active { display: block; }
+    [data-lang-inline] { display: none; }
+    [data-lang-inline].active { display: inline; }
+
+    /* LANG BAR */
+    .lang-bar {
+      background: var(--green-mid);
+      padding: 6px 40px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 40px;
-      height: 64px;
-      box-shadow: 0 1px 16px rgba(26,58,42,0.06);
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-    .logo-text-wrap { line-height: 1; }
-    .logo-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px;
-      color: var(--green-dark);
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .logo-sub {
-      font-size: 8px;
-      letter-spacing: 3px;
-      color: var(--green-muted);
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-size: 13px;
-      color: #888;
-      letter-spacing: 0.3px;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--green-dark); }
-
-    .btn-nav {
-      background: var(--green-dark);
-      color: var(--lime);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 8px 18px;
-      border-radius: 24px;
-      text-decoration: none;
-      letter-spacing: 0.5px;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-nav:hover { background: #0f2a1a; transform: translateY(-1px); }
-
-    #hero {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      min-height: 420px;
-      background: var(--green-dark);
-    }
-
-    .hero-left {
-      padding: 60px 48px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .hero-eyebrow {
-      font-size: 10px;
-      letter-spacing: 3.5px;
-      color: var(--lime);
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 44px;
-      color: var(--cream);
-      line-height: 1.1;
-      font-weight: 400;
-    }
-    .hero-title em { font-style: italic; color: var(--lime); }
-
-    .hero-divider {
-      width: 44px;
-      height: 2px;
-      background: var(--lime);
-      margin: 24px 0;
-    }
-
-    .hero-desc {
-      font-size: 14px;
-      color: var(--green-muted);
-      line-height: 1.8;
-      max-width: 300px;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 12px;
-      margin-top: 28px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: var(--lime);
-      color: var(--green-dark);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 10px 22px;
-      border-radius: 6px;
-      text-decoration: none;
-      letter-spacing: 0.3px;
-      transition: transform 0.15s, box-shadow 0.15s;
-      display: inline-flex;
-      align-items: center;
+      justify-content: flex-end;
       gap: 6px;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(184,207,106,0.35); }
-
-    .btn-outline {
-      border: 1px solid var(--green-soft);
-      color: var(--green-muted);
-      font-size: 12px;
-      padding: 10px 22px;
-      border-radius: 6px;
-      text-decoration: none;
-      letter-spacing: 0.3px;
-      transition: border-color 0.2s, color 0.2s;
+    .lang-btn {
+      background: none;
+      border: 1px solid #2a4a3a;
+      color: #5a8a6a;
+      font-size: 11px;
+      font-family: 'Outfit', sans-serif;
+      padding: 4px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: all 0.2s;
     }
+    .lang-btn:hover { border-color: var(--lime); color: var(--lime); }
+    .lang-btn.active { background: var(--lime); color: var(--green-dark); border-color: var(--lime); font-weight: 600; }
+    .lang-btn.ar { font-family: 'Noto Sans Arabic', sans-serif; letter-spacing: 0; }
+
+    /* NAVBAR */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #fff; border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 40px; height: 64px;
+      box-shadow: 0 1px 16px rgba(26,58,42,0.06);
+    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-text-wrap { line-height: 1; }
+    .logo-name { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--green-dark); font-weight: 700; letter-spacing: 1px; }
+    .logo-sub  { font-size: 8px; letter-spacing: 3px; color: var(--green-muted); text-transform: uppercase; margin-top: 2px; }
+    .nav-links { display: flex; gap: 22px; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: 13px; color: #888; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-dark); }
+    .btn-nav { background: var(--green-dark); color: var(--lime); font-size: 12px; font-weight: 500; padding: 8px 18px; border-radius: 24px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .btn-nav:hover { background: #0f2a1a; transform: translateY(-1px); }
+
+    /* HERO */
+    #hero { display: grid; grid-template-columns: 1.25fr 0.75fr; min-height: 420px; background: var(--green-dark); }
+    .hero-left { padding: 60px 48px; display: flex; flex-direction: column; justify-content: center; }
+    .hero-eyebrow { font-size: 10px; letter-spacing: 3.5px; color: var(--lime); text-transform: uppercase; margin-bottom: 20px; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: 44px; color: var(--cream); line-height: 1.1; font-weight: 400; }
+    .hero-title em { font-style: italic; color: var(--lime); }
+    .hero-divider { width: 44px; height: 2px; background: var(--lime); margin: 24px 0; }
+    .hero-desc { font-size: 14px; color: var(--green-muted); line-height: 1.8; max-width: 300px; }
+    .hero-btns { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn-primary { background: var(--lime); color: var(--green-dark); font-size: 12px; font-weight: 600; padding: 10px 22px; border-radius: 6px; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(184,207,106,0.35); }
+    .btn-outline { border: 1px solid var(--green-soft); color: var(--green-muted); font-size: 12px; padding: 10px 22px; border-radius: 6px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
     .btn-outline:hover { border-color: var(--green-muted); color: #9dbfae; }
 
-    .hero-right {
-      background: var(--green-mid);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid var(--green-soft);
-      opacity: 0.35;
-      pointer-events: none;
-    }
+    .hero-right { background: var(--green-mid); display: flex; align-items: flex-end; justify-content: center; position: relative; overflow: hidden; }
+    .hero-ring { position: absolute; border-radius: 50%; border: 1px solid var(--green-soft); opacity: 0.35; pointer-events: none; }
     .ring-1 { width: 200px; height: 200px; top: -40px; right: -50px; }
-    .ring-2 { width: 130px; height: 130px; top: 20px;  right: 10px; }
-    .ring-3 { width:  70px; height:  70px; bottom: 60px; left: 20px; }
+    .ring-2 { width: 130px; height: 130px; top: 20px; right: 10px; }
+    .ring-3 { width: 70px; height: 70px; bottom: 60px; left: 20px; }
+    .pharmacist-photo-wrap { z-index: 1; width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: center; }
 
-    .pharmacist-photo-wrap {
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
+    /* MARQUEE */
+    .marquee-strip { background: var(--lime); padding: 10px 0; overflow: hidden; white-space: nowrap; }
+    .marquee-inner { display: inline-block; animation: marquee 32s linear infinite; }
+    .marquee-inner span { font-size: 11px; letter-spacing: 2px; color: var(--green-dark); text-transform: uppercase; font-weight: 500; }
 
-    .marquee-strip {
-      background: var(--lime);
-      padding: 10px 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    .marquee-inner {
-      display: inline-block;
-      animation: marquee 22s linear infinite;
-    }
-    .marquee-inner span {
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      color: var(--green-dark);
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-
-    #about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      padding: 60px 48px;
-      background: var(--cream);
-      align-items: start;
-    }
-
-    .pharmacy-photo {
-      width: 100%;
-      border-radius: 14px;
-      overflow: hidden;
-      position: relative;
-      background: var(--cream-mid);
-    }
-
-    .photo-caption {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .caption-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--lime);
-      flex-shrink: 0;
-    }
+    /* ABOUT */
+    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 60px 48px; background: var(--cream); align-items: start; }
+    .pharmacy-photo { width: 100%; border-radius: 14px; overflow: hidden; position: relative; background: var(--cream-mid); }
+    .photo-caption { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+    .caption-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
     .caption-text { font-size: 11px; color: #6a8a6a; letter-spacing: 1px; text-transform: uppercase; }
-
     .about-text { padding-top: 8px; }
-    .section-eyebrow {
-      font-size: 10px;
-      letter-spacing: 2.5px;
-      color: var(--lime);
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      color: var(--green-dark);
-      line-height: 1.3;
-      margin-bottom: 14px;
-    }
+    .section-eyebrow { font-size: 10px; letter-spacing: 2.5px; color: var(--lime); text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--green-dark); line-height: 1.3; margin-bottom: 14px; }
     .about-desc { font-size: 13px; color: var(--text-muted); line-height: 1.9; }
+    .checklist { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; list-style: none; }
+    .checklist li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #4a6a4a; }
+    .check-icon { width: 20px; height: 20px; background: var(--green-light); border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; color: #3a6a2a; font-weight: 600; }
 
-    .checklist {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      list-style: none;
-    }
-    .checklist li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: #4a6a4a;
-    }
-    .check-icon {
-      width: 20px;
-      height: 20px;
-      background: var(--green-light);
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 11px;
-      color: #3a6a2a;
-      font-weight: 600;
-    }
+    /* SERVICES */
+    #services { background: var(--green-dark); padding: 60px 48px; }
+    .services-header { margin-bottom: 36px; }
+    .services-header .section-eyebrow { color: var(--lime); }
+    .services-header .section-title { color: var(--cream); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .service-card { background: #243b2e; border: 1px solid #2a5a3a; border-radius: 14px; padding: 28px 24px; transition: transform 0.2s, border-color 0.2s; }
+    .service-card:hover { transform: translateY(-4px); border-color: var(--lime); }
+    .service-icon { width: 44px; height: 44px; background: #1a3a2a; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .service-icon svg { width: 22px; height: 22px; stroke: var(--lime); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .service-title { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 8px; }
+    .service-desc  { font-size: 12px; color: #6a9a7a; line-height: 1.7; }
 
-    #hours {
-      background: #fff;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 56px 48px;
-    }
-
+    /* HOURS */
+    #hours { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 56px 48px; }
     .hours-header { margin-bottom: 28px; }
-
-    .days-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .day-card {
-      text-align: center;
-      background: var(--green-light);
-      border: 1px solid #d4e8b8;
-      border-radius: 10px;
-      padding: 14px 6px;
-      transition: transform 0.15s;
-    }
+    .days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 16px; }
+    .day-card { text-align: center; background: var(--green-light); border: 1px solid #d4e8b8; border-radius: 10px; padding: 14px 6px; transition: transform 0.15s; }
     .day-card:hover { transform: translateY(-3px); }
     .day-card.closed { background: var(--red-soft); border-color: var(--red-border); }
-
-    .day-name {
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #5a8a3a;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
+    .day-name { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #5a8a3a; margin-bottom: 10px; font-weight: 500; }
     .day-card.closed .day-name { color: var(--red-text); }
-
-    .day-time {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--green-dark);
-      line-height: 1.5;
-    }
+    .day-time { font-size: 13px; font-weight: 500; color: var(--green-dark); line-height: 1.5; }
     .day-card.closed .day-time { color: var(--red-text); font-size: 12px; }
-
-    .hours-summary {
-      background: var(--green-light);
-      border: 1px solid #d4e8b8;
-      border-radius: 10px;
-      padding: 14px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
+    .hours-summary { background: var(--green-light); border: 1px solid #d4e8b8; border-radius: 10px; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .summary-item { display: flex; align-items: center; gap: 10px; }
     .summary-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
     .dot-green { background: #5a8a3a; animation: pulse-dot 2.5s ease-in-out infinite; }
@@ -392,181 +179,63 @@
     .summary-time   { font-size: 15px; font-weight: 600; color: var(--green-dark); letter-spacing: 0.5px; }
     .summary-closed { font-size: 13px; color: var(--red-text); }
 
-    #quote {
-      background: var(--cream-warm);
-      border-bottom: 1px solid #ddd7c8;
-      padding: 56px 48px;
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
+    /* QUOTES */
+    #quotes { background: var(--cream-warm); padding: 60px 48px; border-top: 1px solid #ddd7c8; border-bottom: 1px solid #ddd7c8; }
+    .quotes-header { margin-bottom: 36px; }
+    .quotes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .quote-card { background: #fff; border: 1px solid #e0d8c8; border-radius: 14px; padding: 28px 28px 24px; position: relative; transition: box-shadow 0.2s; }
+    .quote-card:hover { box-shadow: 0 6px 28px rgba(26,58,42,0.08); }
+    .quote-card.featured { background: var(--green-dark); border-color: var(--green-dark); grid-column: span 2; display: flex; gap: 28px; align-items: center; }
+    .quote-big-mark { font-family: 'Playfair Display', serif; font-size: 72px; color: var(--lime); line-height: 0.5; flex-shrink: 0; margin-top: 10px; user-select: none; }
+    .qmark { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--lime); line-height: 0.6; margin-bottom: 12px; display: block; user-select: none; }
+    .q-text { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--green-dark); line-height: 1.7; font-style: italic; }
+    .quote-card.featured .q-text { font-size: 20px; color: var(--cream); }
+    .q-author { font-size: 11px; color: #8a9a7a; margin-top: 14px; letter-spacing: 1.5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+    .quote-card.featured .q-author { color: var(--green-muted); }
+    .q-author::before { content: ''; display: inline-block; width: 20px; height: 1px; background: currentColor; }
+    .q-lang-tag { position: absolute; top: 16px; right: 16px; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; background: var(--green-light); color: #4a7a3a; padding: 3px 8px; border-radius: 20px; }
+    .quote-card.featured .q-lang-tag { position: static; background: #243b2e; color: var(--lime); margin-top: 10px; display: inline-block; }
+    .quote-card.arabic-card { direction: rtl; }
+    .quote-card.arabic-card .qmark { text-align: right; }
+    .quote-card.arabic-card .q-text { font-family: 'Noto Sans Arabic', sans-serif; font-style: normal; font-size: 14px; }
+    .quote-card.arabic-card .q-lang-tag { right: auto; left: 16px; font-family: 'Noto Sans Arabic', sans-serif; letter-spacing: 0; }
+    .quote-card.arabic-card .q-author::before { display: none; }
+    .quote-card.arabic-card .q-author { font-family: 'Noto Sans Arabic', sans-serif; letter-spacing: 0; }
 
-    .quote-mark {
-      font-family: 'Playfair Display', serif;
-      font-size: 80px;
-      color: var(--lime);
-      line-height: 0.5;
-      flex-shrink: 0;
-      margin-top: 12px;
-      user-select: none;
-    }
-
-    .quote-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      color: var(--green-dark);
-      line-height: 1.65;
-      font-style: italic;
-    }
-
-    .quote-author {
-      font-size: 12px;
-      color: #8a9a7a;
-      margin-top: 12px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    #map-section {
-      background: var(--cream);
-      padding: 56px 48px;
-      border-top: 1px solid var(--border);
-    }
-
+    /* MAP */
+    #map-section { background: var(--cream); padding: 56px 48px; border-top: 1px solid var(--border); }
     .map-header { margin-bottom: 24px; }
-
-    .map-wrapper {
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 24px rgba(26,58,42,0.08);
-      height: 380px;
-    }
-
-    .map-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    .map-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 16px;
-    }
-    .map-info-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--lime);
-      flex-shrink: 0;
-    }
-    .map-info-text { font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; }
-    .map-info-link {
-      font-size: 12px;
-      color: var(--green-soft);
-      text-decoration: none;
-      margin-left: auto;
-      letter-spacing: 0.3px;
-      transition: color 0.2s;
-    }
+    .map-wrapper { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(26,58,42,0.08); height: 380px; }
+    .map-wrapper iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .map-info { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+    .map-info-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
+    .map-info-text { font-size: 12px; color: var(--text-muted); }
+    .map-info-link { font-size: 12px; color: var(--green-soft); text-decoration: none; margin-left: auto; transition: color 0.2s; }
     .map-info-link:hover { color: var(--green-dark); }
 
-    #contact {
-      background: var(--green-dark);
-      padding: 60px 48px 0;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-
+    /* FOOTER */
+    #contact { background: var(--green-dark); padding: 60px 48px 0; }
+    .contact-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
     .contact-brand .logo-name { color: var(--cream); font-size: 20px; }
     .contact-brand .logo-sub  { color: var(--green-muted); letter-spacing: 2px; }
-
-    .brand-desc {
-      font-size: 13px;
-      color: #5a8a6a;
-      line-height: 1.8;
-      margin-top: 16px;
-      max-width: 240px;
-    }
-
-    .contact-col-title {
-      font-size: 9px;
-      letter-spacing: 2px;
-      color: var(--lime);
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-    .contact-item a, .contact-item span {
-      font-size: 13px;
-      color: #c0d8c0;
-      text-decoration: none;
-      line-height: 1.7;
-      transition: color 0.2s;
-    }
+    .brand-desc { font-size: 13px; color: #5a8a6a; line-height: 1.8; margin-top: 16px; max-width: 240px; }
+    .contact-col-title { font-size: 9px; letter-spacing: 2px; color: var(--lime); text-transform: uppercase; margin-bottom: 14px; }
+    .contact-item { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+    .contact-item a, .contact-item span { font-size: 13px; color: #c0d8c0; text-decoration: none; line-height: 1.7; transition: color 0.2s; }
     .contact-item a:hover { color: var(--lime); }
     .contact-item .sub { font-size: 10px; color: #3a6a4a; }
-
-    .wa-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 12px;
-      background: #25d366;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 9px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.15s;
-    }
+    .wa-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; background: #25d366; color: #fff; font-size: 12px; font-weight: 500; padding: 9px 16px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s, transform 0.15s; }
     .wa-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
-    .footer-bottom {
-      border-top: 1px solid var(--green-soft);
-      padding: 20px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+    .footer-bottom { border-top: 1px solid var(--green-soft); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .footer-copy { font-size: 12px; color: #3a6a4a; }
     .footer-loc  { font-size: 11px; color: #2a4a3a; letter-spacing: 2px; text-transform: uppercase; }
-
-    .footer-designer {
-      background: #0f2a1a;
-      text-align: center;
-      padding: 14px 40px;
-    }
-    .footer-designer span {
-      font-size: 11px;
-      color: #2a4a3a;
-      letter-spacing: 1px;
-    }
-    .footer-designer a {
-      color: #4a7a5a;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .footer-designer { background: #0f2a1a; text-align: center; padding: 14px 40px; }
+    .footer-designer span { font-size: 11px; color: #2a4a3a; letter-spacing: 1px; }
+    .footer-designer a { color: #4a7a5a; text-decoration: none; transition: color 0.2s; }
     .footer-designer a:hover { color: var(--lime); }
 
     @media (max-width: 768px) {
+      .lang-bar { padding: 6px 20px; }
       nav { padding: 0 20px; }
       .nav-links { display: none; }
       #hero { grid-template-columns: 1fr; }
@@ -574,9 +243,13 @@
       .hero-title { font-size: 32px; }
       .hero-right { min-height: 220px; }
       #about { grid-template-columns: 1fr; padding: 40px 24px; gap: 24px; }
+      #services { padding: 40px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
       #hours { padding: 40px 20px; }
       .days-grid { grid-template-columns: repeat(4, 1fr); }
-      #quote { padding: 40px 24px; flex-direction: column; }
+      #quotes { padding: 40px 24px; }
+      .quotes-grid { grid-template-columns: 1fr; }
+      .quote-card.featured { grid-column: span 1; flex-direction: column; gap: 12px; }
       #map-section { padding: 40px 24px; }
       .map-wrapper { height: 280px; }
       #contact { padding: 40px 24px 0; }
@@ -585,12 +258,19 @@
     }
   </style>
 </head>
-
 <body>
 
+  <!-- DİL ÇUBUĞU -->
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('tr')">TR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn ar" onclick="setLang('ar')">عربي</button>
+  </div>
+
+  <!-- NAVBAR -->
   <nav>
     <a href="#" class="logo">
-      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Önal Eczanesi logo">
+      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" aria-label="Önal Eczanesi logo">
         <rect width="38" height="38" rx="10" fill="#1a3a2a"/>
         <text x="19" y="25" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#b8cf6a" text-anchor="middle" letter-spacing="-1">Ö</text>
         <line x1="10" y1="30" x2="28" y2="30" stroke="#b8cf6a" stroke-width="1.2" stroke-linecap="round"/>
@@ -601,35 +281,40 @@
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="#about">Hakkımızda</a></li>
-      <li><a href="#hours">Çalışma Saatleri</a></li>
-      <li><a href="#map-section">Konum</a></li>
-      <li><a href="#contact">İletişim</a></li>
+      <li><a href="#about"><span data-lang-inline="tr active">Hakkımızda</span><span data-lang-inline="en">About</span><span data-lang-inline="ar">عن الصيدلية</span></a></li>
+      <li><a href="#services"><span data-lang-inline="tr active">Hizmetler</span><span data-lang-inline="en">Services</span><span data-lang-inline="ar">خدماتنا</span></a></li>
+      <li><a href="#hours"><span data-lang-inline="tr active">Saatler</span><span data-lang-inline="en">Hours</span><span data-lang-inline="ar">أوقات العمل</span></a></li>
+      <li><a href="#map-section"><span data-lang-inline="tr active">Konum</span><span data-lang-inline="en">Location</span><span data-lang-inline="ar">الموقع</span></a></li>
+      <li><a href="#contact"><span data-lang-inline="tr active">İletişim</span><span data-lang-inline="en">Contact</span><span data-lang-inline="ar">تواصل</span></a></li>
       <li><a class="btn-nav" href="https://wa.me/905456119998" target="_blank" rel="noopener">WhatsApp →</a></li>
     </ul>
   </nav>
 
-
+  <!-- HERO -->
   <section id="hero">
     <div class="hero-left">
       <p class="hero-eyebrow fade-up delay-1">Uzungöl · Çaykara · Trabzon</p>
       <h1 class="hero-title fade-up delay-2">
-        Sağlığınız için<br>
-        <em>doğru adres.</em>
+        <span data-lang="tr active">Sağlığınız için<br><em>doğru adres.</em></span>
+        <span data-lang="en">The right address<br><em>for your health.</em></span>
+        <span data-lang="ar" style="font-family:'Noto Sans Arabic',sans-serif;font-size:34px;direction:rtl;">العنوان الصحيح<br><em>لصحّتكم.</em></span>
       </h1>
       <div class="hero-divider fade-up delay-3"></div>
       <p class="hero-desc fade-up delay-3">
-        Eczacı Onur Can Önal danışmanlığıyla, her ihtiyacınızda güvenilir ve sıcak sağlık hizmeti.
+        <span data-lang="tr active">Eczacı Onur Can Önal danışmanlığıyla, her ihtiyacınızda güvenilir ve sıcak sağlık hizmeti.</span>
+        <span data-lang="en">Under the guidance of Pharmacist Onur Can Önal — reliable and caring health services whenever you need.</span>
+        <span data-lang="ar" style="font-family:'Noto Sans Arabic',sans-serif;direction:rtl;">تحت إشراف الصيدلاني أونور جان أونال، خدمات صحية موثوقة ودافئة في كل وقت تحتاجها.</span>
       </p>
       <div class="hero-btns fade-up delay-4">
         <a class="btn-primary" href="https://wa.me/905456119998" target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          WhatsApp ile Ulaş
+          <span data-lang-inline="tr active">WhatsApp ile Ulaş</span>
+          <span data-lang-inline="en">Message on WhatsApp</span>
+          <span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">تواصل عبر واتساب</span>
         </a>
         <a class="btn-outline" href="tel:05308636193">0530 863 61 93</a>
       </div>
     </div>
-
     <div class="hero-right">
       <div class="hero-ring ring-1"></div>
       <div class="hero-ring ring-2"></div>
@@ -640,126 +325,221 @@
     </div>
   </section>
 
-
+  <!-- MARQUEE -->
   <div class="marquee-strip" aria-hidden="true">
     <div class="marquee-inner">
-      <span>✦ REÇETE İLAÇLARI &nbsp;&nbsp; ✦ SAĞLIK DANIŞMANLIĞI &nbsp;&nbsp; ✦ VİTAMİN &amp; TAKVİYE &nbsp;&nbsp; ✦ TIBBİ MALZEME &nbsp;&nbsp; ✦ BEBEK ÜRÜNLERİ &nbsp;&nbsp; ✦ DERMATOKOZMETİK &nbsp;&nbsp; ✦ REÇETESIZ İLAÇLAR &nbsp;&nbsp; ✦ REÇETE İLAÇLARI &nbsp;&nbsp; ✦ SAĞLIK DANIŞMANLIĞI &nbsp;&nbsp; ✦ VİTAMİN &amp; TAKVİYE &nbsp;&nbsp; ✦ TIBBİ MALZEME &nbsp;&nbsp; ✦ BEBEK ÜRÜNLERİ &nbsp;&nbsp; ✦ DERMATOKOZMETİK &nbsp;&nbsp; ✦ REÇETESIZ İLAÇLAR &nbsp;&nbsp;</span>
+      <span>✦ REÇETE İLAÇLARI &nbsp;&nbsp; ✦ PRESCRIPTION DRUGS &nbsp;&nbsp; ✦ الأدوية الموصوفة &nbsp;&nbsp; ✦ SAĞLIK DANIŞMANLIĞI &nbsp;&nbsp; ✦ HEALTH CONSULTING &nbsp;&nbsp; ✦ استشارة صحية &nbsp;&nbsp; ✦ VİTAMİN &amp; TAKVİYE &nbsp;&nbsp; ✦ VITAMINS &amp; SUPPLEMENTS &nbsp;&nbsp; ✦ TIBBİ MALZEME &nbsp;&nbsp; ✦ MEDICAL SUPPLIES &nbsp;&nbsp; ✦ مستلزمات طبية &nbsp;&nbsp; ✦ BEBEK ÜRÜNLERİ &nbsp;&nbsp; ✦ BABY PRODUCTS &nbsp;&nbsp; ✦ منتجات الأطفال &nbsp;&nbsp;</span>
     </div>
   </div>
 
-
+  <!-- HAKKIMIZDA -->
   <section id="about">
     <div>
       <div class="pharmacy-photo">
-        <img src="eczane.jpeg" alt="Önal Eczanesi dış görünüm" style="width:100%;height:auto;display:block;border-radius:14px;" />
+        <img src="eczane.jpeg" alt="Önal Eczanesi" style="width:100%;height:auto;display:block;border-radius:14px;" />
       </div>
       <div class="photo-caption">
         <div class="caption-dot"></div>
         <span class="caption-text">Atatürk Cad. 317B · Uzungöl</span>
       </div>
     </div>
-
     <div class="about-text">
-      <p class="section-eyebrow">Hakkımızda</p>
-      <h2 class="section-title">Uzungöl'ün güvenilir sağlık noktası</h2>
+      <p class="section-eyebrow">
+        <span data-lang-inline="tr active">Hakkımızda</span><span data-lang-inline="en">About Us</span><span data-lang-inline="ar">عن الصيدلية</span>
+      </p>
+      <h2 class="section-title">
+        <span data-lang="tr active">Uzungöl'ün güvenilir sağlık noktası</span>
+        <span data-lang="en">Uzungöl's trusted health point</span>
+        <span data-lang="ar" style="font-family:'Noto Sans Arabic',sans-serif;direction:rtl;">نقطة الصحة الموثوقة في أوزونغول</span>
+      </h2>
       <p class="about-desc">
-        Önal Eczanesi olarak, bölge halkının ve ziyaretçilerin tüm sağlık ihtiyaçlarını karşılamak için buradayız.
-        Her danışmada kişiye özel, sıcak ve profesyonel bir yaklaşım sunuyor; sağlığınızı en önemli önceliğimiz olarak görüyoruz.
+        <span data-lang="tr active">Önal Eczanesi olarak, bölge halkının ve ziyaretçilerin tüm sağlık ihtiyaçlarını karşılamak için buradayız. Her danışmada kişiye özel, sıcak ve profesyonel bir yaklaşım sunuyor; sağlığınızı en önemli önceliğimiz olarak görüyoruz.</span>
+        <span data-lang="en">At Önal Pharmacy, we are here to meet all the health needs of local residents and visitors. We offer a personalized, warm and professional approach in every consultation — your health is our top priority.</span>
+        <span data-lang="ar" style="font-family:'Noto Sans Arabic',sans-serif;direction:rtl;">في صيدلية أونال، نحن هنا لتلبية جميع احتياجاتكم الصحية. نقدم نهجاً شخصياً ودافئاً واحترافياً في كل استشارة — صحتكم هي أولويتنا القصوى.</span>
       </p>
       <ul class="checklist">
-        <li><span class="check-icon">✓</span> Uzman eczacı danışmanlığı</li>
-        <li><span class="check-icon">✓</span> Geniş ilaç ve ürün yelpazesi</li>
-        <li><span class="check-icon">✓</span> Hızlı ve güvenilir hizmet</li>
-        <li><span class="check-icon">✓</span> Sıcak ve samimi yaklaşım</li>
+        <li><span class="check-icon">✓</span> <span data-lang-inline="tr active">Uzman eczacı danışmanlığı</span><span data-lang-inline="en">Expert pharmacist consultation</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">استشارة صيدلانية متخصصة</span></li>
+        <li><span class="check-icon">✓</span> <span data-lang-inline="tr active">Geniş ilaç ve ürün yelpazesi</span><span data-lang-inline="en">Wide range of medicines and products</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">مجموعة واسعة من الأدوية والمنتجات</span></li>
+        <li><span class="check-icon">✓</span> <span data-lang-inline="tr active">Hızlı ve güvenilir hizmet</span><span data-lang-inline="en">Fast and reliable service</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">خدمة سريعة وموثوقة</span></li>
+        <li><span class="check-icon">✓</span> <span data-lang-inline="tr active">Sıcak ve samimi yaklaşım</span><span data-lang-inline="en">Warm and sincere approach</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">تعامل دافئ وصادق</span></li>
       </ul>
     </div>
   </section>
 
+  <!-- HİZMETLER -->
+  <section id="services">
+    <div class="services-header">
+      <p class="section-eyebrow"><span data-lang-inline="tr active">Hizmetlerimiz</span><span data-lang-inline="en">Our Services</span><span data-lang-inline="ar">خدماتنا</span></p>
+      <h2 class="section-title">
+        <span data-lang="tr active">Size nasıl yardımcı olabiliriz?</span>
+        <span data-lang="en">How can we help you?</span>
+        <span data-lang="ar" style="font-family:'Noto Sans Arabic',sans-serif;direction:rtl;">كيف يمكننا مساعدتكم؟</span>
+      </h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M9 12h6m-3-3v6M4 6h16M4 18h16"/></svg></div>
+        <p class="service-title"><span data-lang-inline="tr active">Reçeteli İlaç Temini</span><span data-lang-inline="en">Prescription Medications</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">أدوية بوصفة طبية</span></p>
+        <p class="service-desc"><span data-lang-inline="tr active">Tüm reçeteli ilaçlarınızı hızlı ve güvenli şekilde temin ediyoruz.</span><span data-lang-inline="en">We provide all your prescription medications quickly and safely.</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">نوفر جميع أدويتكم الموصوفة بسرعة وأمان.</span></p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
+        <p class="service-title"><span data-lang-inline="tr active">Sağlık Danışmanlığı</span><span data-lang-inline="en">Health Consultation</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">استشارة صحية</span></p>
+        <p class="service-desc"><span data-lang-inline="tr active">İlaç kullanımı, yan etkiler ve sağlık sorunlarında uzman rehberlik.</span><span data-lang-inline="en">Expert guidance on medication use, side effects, and health concerns.</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">إرشاد متخصص حول استخدام الأدوية والآثار الجانبية.</span></p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zM6 20a6 6 0 0 1 12 0"/></svg></div>
+        <p class="service-title"><span data-lang-inline="tr active">Vitamin &amp; Takviye</span><span data-lang-inline="en">Vitamins &amp; Supplements</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">فيتامينات ومكملات</span></p>
+        <p class="service-desc"><span data-lang-inline="tr active">Geniş vitamin, mineral ve besin takviyesi ürün yelpazesi.</span><span data-lang-inline="en">A wide range of vitamins, minerals, and nutritional supplements.</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">مجموعة واسعة من الفيتامينات والمعادن والمكملات الغذائية.</span></p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <p class="service-title"><span data-lang-inline="tr active">Tıbbi Malzeme</span><span data-lang-inline="en">Medical Supplies</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">مستلزمات طبية</span></p>
+        <p class="service-desc"><span data-lang-inline="tr active">Tansiyon aleti, şeker ölçer, pansuman ve tıbbi ekipmanlar.</span><span data-lang-inline="en">Blood pressure monitors, glucose meters, dressings and medical equipment.</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">أجهزة قياس الضغط والسكر والضمادات والمعدات الطبية.</span></p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <p class="service-title"><span data-lang-inline="tr active">Dermokozmetik</span><span data-lang-inline="en">Dermocosmetics</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">مستحضرات التجميل الطبية</span></p>
+        <p class="service-desc"><span data-lang-inline="tr active">Cilt sağlığı, güneş koruma ve dermatoloji ürünleri.</span><span data-lang-inline="en">Skin health, sun protection and dermatology products.</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">منتجات صحة البشرة والحماية من الشمس والجلدية.</span></p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <p class="service-title"><span data-lang-inline="tr active">Bebek &amp; Anne Ürünleri</span><span data-lang-inline="en">Baby &amp; Mother Products</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">منتجات الأطفال والأمهات</span></p>
+        <p class="service-desc"><span data-lang-inline="tr active">Bebek bakım, anne sağlığı ve emzirme destek ürünleri.</span><span data-lang-inline="en">Baby care, maternal health and breastfeeding support products.</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">منتجات العناية بالطفل وصحة الأم ودعم الرضاعة.</span></p>
+      </div>
+    </div>
+  </section>
 
+  <!-- ÇALIŞMA SAATLERİ -->
   <section id="hours">
     <div class="hours-header">
-      <p class="section-eyebrow">Çalışma Saatleri</p>
-      <h2 class="section-title">Ne zaman ziyaret edebilirsiniz?</h2>
+      <p class="section-eyebrow"><span data-lang-inline="tr active">Çalışma Saatleri</span><span data-lang-inline="en">Opening Hours</span><span data-lang-inline="ar">أوقات العمل</span></p>
+      <h2 class="section-title">
+        <span data-lang="tr active">Ne zaman ziyaret edebilirsiniz?</span>
+        <span data-lang="en">When can you visit us?</span>
+        <span data-lang="ar" style="font-family:'Noto Sans Arabic',sans-serif;direction:rtl;">متى يمكنكم زيارتنا؟</span>
+      </h2>
     </div>
     <div class="days-grid">
-      <div class="day-card">
-        <div class="day-name">Pzt</div>
-        <div class="day-time">08:00<br>—<br>19:00</div>
-      </div>
-      <div class="day-card">
-        <div class="day-name">Sal</div>
-        <div class="day-time">08:00<br>—<br>19:00</div>
-      </div>
-      <div class="day-card">
-        <div class="day-name">Çar</div>
-        <div class="day-time">08:00<br>—<br>19:00</div>
-      </div>
-      <div class="day-card">
-        <div class="day-name">Per</div>
-        <div class="day-time">08:00<br>—<br>19:00</div>
-      </div>
-      <div class="day-card">
-        <div class="day-name">Cum</div>
-        <div class="day-time">08:00<br>—<br>19:00</div>
-      </div>
-      <div class="day-card">
-        <div class="day-name">Cmt</div>
-        <div class="day-time">08:00<br>—<br>19:00</div>
-      </div>
-      <div class="day-card closed">
-        <div class="day-name">Paz</div>
-        <div class="day-time">Kapalı</div>
-      </div>
+      <div class="day-card"><div class="day-name"><span data-lang-inline="tr active">Pzt</span><span data-lang-inline="en">Mon</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;font-size:8px;">الإثنين</span></div><div class="day-time">08:00<br>—<br>19:00</div></div>
+      <div class="day-card"><div class="day-name"><span data-lang-inline="tr active">Sal</span><span data-lang-inline="en">Tue</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;font-size:8px;">الثلاثاء</span></div><div class="day-time">08:00<br>—<br>19:00</div></div>
+      <div class="day-card"><div class="day-name"><span data-lang-inline="tr active">Çar</span><span data-lang-inline="en">Wed</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;font-size:8px;">الأربعاء</span></div><div class="day-time">08:00<br>—<br>19:00</div></div>
+      <div class="day-card"><div class="day-name"><span data-lang-inline="tr active">Per</span><span data-lang-inline="en">Thu</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;font-size:8px;">الخميس</span></div><div class="day-time">08:00<br>—<br>19:00</div></div>
+      <div class="day-card"><div class="day-name"><span data-lang-inline="tr active">Cum</span><span data-lang-inline="en">Fri</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;font-size:8px;">الجمعة</span></div><div class="day-time">08:00<br>—<br>19:00</div></div>
+      <div class="day-card"><div class="day-name"><span data-lang-inline="tr active">Cmt</span><span data-lang-inline="en">Sat</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;font-size:8px;">السبت</span></div><div class="day-time">08:00<br>—<br>19:00</div></div>
+      <div class="day-card closed"><div class="day-name"><span data-lang-inline="tr active">Paz</span><span data-lang-inline="en">Sun</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;font-size:8px;">الأحد</span></div><div class="day-time"><span data-lang-inline="tr active">Kapalı</span><span data-lang-inline="en">Closed</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">مغلق</span></div></div>
     </div>
     <div class="hours-summary">
       <div class="summary-item">
         <div class="summary-dot dot-green"></div>
-        <span class="summary-label">Pazartesi – Cumartesi</span>
+        <span class="summary-label"><span data-lang-inline="tr active">Pazartesi – Cumartesi</span><span data-lang-inline="en">Monday – Saturday</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">الإثنين – السبت</span></span>
       </div>
       <span class="summary-time">08:00 – 19:00</span>
       <div class="summary-item">
         <div class="summary-dot dot-red"></div>
-        <span class="summary-closed">Pazar günleri kapalı</span>
+        <span class="summary-closed"><span data-lang-inline="tr active">Pazar günleri kapalı</span><span data-lang-inline="en">Closed on Sundays</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">مغلق يوم الأحد</span></span>
       </div>
     </div>
   </section>
 
+  <!-- GÜZEL SÖZLER -->
+  <section id="quotes">
+    <div class="quotes-header">
+      <p class="section-eyebrow"><span data-lang-inline="tr active">İlham Veren Sözler</span><span data-lang-inline="en">Inspiring Words</span><span data-lang-inline="ar">كلمات ملهمة</span></p>
+      <h2 class="section-title">
+        <span data-lang="tr active">Sağlık ve yaşam üzerine</span>
+        <span data-lang="en">On health and life</span>
+        <span data-lang="ar" style="font-family:'Noto Sans Arabic',sans-serif;direction:rtl;">حول الصحة والحياة</span>
+      </h2>
+    </div>
+    <div class="quotes-grid">
 
-  <section id="quote">
-    <div class="quote-mark" aria-hidden="true">"</div>
-    <div>
-      <p class="quote-text">
-        Sağlık en büyük servettir ama paradan sonra.
-      </p>
-      <p class="quote-author">— Onur Can Önal</p>
+      <div class="quote-card featured">
+        <div class="quote-big-mark">"</div>
+        <div>
+          <p class="q-text">Sağlıklı olmak bir hedef değil, her gün verilen küçük kararların toplamıdır.</p>
+          <p class="q-author">Onur Can Önal — Eczacı</p>
+          <span class="q-lang-tag">Türkçe</span>
+        </div>
+      </div>
+
+      <div class="quote-card">
+        <span class="q-lang-tag">English</span>
+        <span class="qmark">"</span>
+        <p class="q-text">The greatest wealth is health. Take care of your body — it is the only place you have to live.</p>
+        <p class="q-author">Virgil</p>
+      </div>
+
+      <div class="quote-card">
+        <span class="q-lang-tag">Türkçe</span>
+        <span class="qmark">"</span>
+        <p class="q-text">Hastalık gelince insan anlar ki sağlık, hiç fark etmeden taşıdığı en büyük hazineymiş.</p>
+        <p class="q-author">Hipokrat</p>
+      </div>
+
+      <div class="quote-card arabic-card">
+        <span class="q-lang-tag">عربي</span>
+        <span class="qmark">"</span>
+        <p class="q-text">الصحة تاج على رؤوس الأصحاء لا يراه إلا المرضى.</p>
+        <p class="q-author">مثل عربي</p>
+      </div>
+
+      <div class="quote-card">
+        <span class="q-lang-tag">Türkçe</span>
+        <span class="qmark">"</span>
+        <p class="q-text">İlaç bazen iyileştirir, sıklıkla rahatlatır, ama her zaman teselli eder.</p>
+        <p class="q-author">Ambroise Paré</p>
+      </div>
+
+      <div class="quote-card">
+        <span class="q-lang-tag">English</span>
+        <span class="qmark">"</span>
+        <p class="q-text">It is health that is real wealth, and not pieces of gold and silver.</p>
+        <p class="q-author">Mahatma Gandhi</p>
+      </div>
+
+      <div class="quote-card arabic-card">
+        <span class="q-lang-tag">عربي</span>
+        <span class="qmark">"</span>
+        <p class="q-text">الوقاية خير من العلاج.</p>
+        <p class="q-author">ابن سينا</p>
+      </div>
+
+      <div class="quote-card">
+        <span class="q-lang-tag">Türkçe</span>
+        <span class="qmark">"</span>
+        <p class="q-text">Sağlık, insanın kendisiyle kurduğu en değerli ilişkidir. Onu ihmal etmek, her şeyi ihmal etmektir.</p>
+        <p class="q-author">Seneca</p>
+      </div>
+
     </div>
   </section>
 
-
+  <!-- HARİTA -->
   <section id="map-section">
     <div class="map-header">
-      <p class="section-eyebrow">Konum</p>
-      <h2 class="section-title">Bizi haritada bulun</h2>
+      <p class="section-eyebrow"><span data-lang-inline="tr active">Konum</span><span data-lang-inline="en">Location</span><span data-lang-inline="ar">الموقع</span></p>
+      <h2 class="section-title">
+        <span data-lang="tr active">Bizi haritada bulun</span>
+        <span data-lang="en">Find us on the map</span>
+        <span data-lang="ar" style="font-family:'Noto Sans Arabic',sans-serif;direction:rtl;">ابحث عنا على الخريطة</span>
+      </h2>
     </div>
     <div class="map-wrapper">
-      <iframe
-        src="https://maps.google.com/maps?q=Atatürk+Caddesi+317B+Uzungöl+Çaykara+Trabzon&output=embed&z=16&hl=tr"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Önal Eczanesi Konum">
-      </iframe>
+      <iframe src="https://maps.google.com/maps?q=Atatürk+Caddesi+317B+Uzungöl+Çaykara+Trabzon&output=embed&z=16&hl=tr" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Önal Eczanesi Konum"></iframe>
     </div>
     <div class="map-info">
       <div class="map-info-dot"></div>
       <span class="map-info-text">Atatürk Caddesi 317B, 61940 Uzungöl / Çaykara, Trabzon</span>
       <a class="map-info-link" href="https://maps.app.goo.gl/2YRdxbmhZhX8sNWQ7" target="_blank" rel="noopener">
-        Google Haritalar'da Aç →
+        <span data-lang-inline="tr active">Google Haritalar'da Aç →</span>
+        <span data-lang-inline="en">Open in Google Maps →</span>
+        <span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">افتح في خرائط Google →</span>
       </a>
     </div>
   </section>
 
-
+  <!-- FOOTER -->
   <footer id="contact">
     <div class="contact-grid">
       <div class="contact-brand">
@@ -775,43 +555,44 @@
           </div>
         </div>
         <p class="brand-desc">
-          Eczacı Onur Can Önal liderliğinde, Uzungöl'de güvenilir sağlık hizmeti sunuyoruz.
+          <span data-lang-inline="tr active">Eczacı Onur Can Önal liderliğinde, Uzungöl'de güvenilir sağlık hizmeti sunuyoruz.</span>
+          <span data-lang-inline="en">Under the leadership of Pharmacist Onur Can Önal, we provide trusted health services in Uzungöl.</span>
+          <span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;direction:rtl;">تحت قيادة الصيدلاني أونور جان أونال، نقدم خدمات صحية موثوقة في أوزونغول.</span>
         </p>
       </div>
-
       <div>
-        <p class="contact-col-title">İletişim</p>
+        <p class="contact-col-title"><span data-lang-inline="tr active">İletişim</span><span data-lang-inline="en">Contact</span><span data-lang-inline="ar">تواصل</span></p>
         <div class="contact-item">
           <a href="tel:05308636193">0530 863 61 93</a>
           <a href="tel:05456119998">0545 611 99 98</a>
-          <span class="sub">WhatsApp hattı</span>
+          <span class="sub">WhatsApp</span>
           <a href="mailto:onaleczanesi1@gmail.com">onaleczanesi1@gmail.com</a>
         </div>
         <a class="wa-btn" href="https://wa.me/905456119998" target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          WhatsApp'tan Yaz
+          <span data-lang-inline="tr active">WhatsApp'tan Yaz</span>
+          <span data-lang-inline="en">Message on WhatsApp</span>
+          <span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">راسلنا على واتساب</span>
         </a>
       </div>
-
       <div>
-        <p class="contact-col-title">Adres</p>
+        <p class="contact-col-title"><span data-lang-inline="tr active">Adres</span><span data-lang-inline="en">Address</span><span data-lang-inline="ar">العنوان</span></p>
         <div class="contact-item">
           <span>Atatürk Caddesi 317B</span>
           <span>61940 Uzungöl / Çaykara</span>
           <span>Trabzon</span>
         </div>
         <div style="margin-top:16px;">
-          <p class="contact-col-title">Çalışma Saatleri</p>
+          <p class="contact-col-title"><span data-lang-inline="tr active">Çalışma Saatleri</span><span data-lang-inline="en">Opening Hours</span><span data-lang-inline="ar">أوقات العمل</span></p>
           <div class="contact-item">
-            <span style="font-size:13px;color:#c0d8c0;">Pzt – Cmt: 08:00 – 19:00</span>
-            <span style="font-size:13px;color:#c06060;">Pazar: Kapalı</span>
+            <span style="font-size:13px;color:#c0d8c0;"><span data-lang-inline="tr active">Pzt – Cmt: 08:00 – 19:00</span><span data-lang-inline="en">Mon – Sat: 08:00 – 19:00</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">الإثنين – السبت: 08:00 – 19:00</span></span>
+            <span style="font-size:13px;color:#c06060;"><span data-lang-inline="tr active">Pazar: Kapalı</span><span data-lang-inline="en">Sunday: Closed</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">الأحد: مغلق</span></span>
           </div>
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
-      <span class="footer-copy">© 2025 Önal Eczanesi · Tüm hakları saklıdır.</span>
+      <span class="footer-copy">© 2025 Önal Eczanesi · <span data-lang-inline="tr active">Tüm hakları saklıdır.</span><span data-lang-inline="en">All rights reserved.</span><span data-lang-inline="ar" style="font-family:'Noto Sans Arabic',sans-serif;">جميع الحقوق محفوظة.</span></span>
       <span class="footer-loc">Uzungöl · Çaykara · Trabzon</span>
     </div>
   </footer>
@@ -820,5 +601,21 @@
     <span>Designed by <a href="mailto:serkanmazlum@gmail.com">Serkan Mazlum</a></span>
   </div>
 
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('active', el.dataset.lang === lang);
+      });
+      document.querySelectorAll('[data-lang-inline]').forEach(el => {
+        el.classList.toggle('active', el.dataset.langInline === lang);
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes("'" + lang + "'"));
+      });
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    }
+    setLang('tr');
+  </script>
 </body>
 </html>
